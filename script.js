@@ -21,27 +21,31 @@ window.addEventListener("resize", function()
     canvas.height = window.innerHeight;
 })
 
-// Listener on event mouse click
-canvas.addEventListener("click", function(event)
+// Listener on event mouse down
+canvas.addEventListener("mousedown", function(event)
 {
-    mouse.x = event.x;
-    mouse.y = event.y;
-    // Create x particles
-    for (let i = 0; i < 100; i++)
-    {
-        particlesArray.push(new Particle());
-    }
+    mouse_down = true;
+})
+
+// Listener on event mouse up
+canvas.addEventListener("mouseup", function(event)
+{
+    mouse_down = false;
 })
 
 // Listener on event mouse move
 canvas.addEventListener("mousemove", function(event)
 {
-    mouse.x = event.x;
-    mouse.y = event.y;
-    // Create x particles
-    for (let i = 0; i < 5; i++)
+    // If mouse button is down draw at mouse
+    if (mouse_down == true)
     {
-        particlesArray.push(new Particle());
+        mouse.x = event.x;
+        mouse.y = event.y;
+        // Create x particles
+        for (let i = 0; i < 5; i++)
+        {
+            particlesArray.push(new Particle());
+        }
     }
 })
 
