@@ -4,7 +4,6 @@
 // ------------------------------------------------------
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-console.log(ctx);
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const particlesArray = [];
@@ -122,7 +121,6 @@ function handleParticles()
         if (particlesArray[i].size <= 0.3)
         {
             particlesArray.splice(i, 1);
-            console.log(particlesArray.length);
             i--;
         }
     }
