@@ -1,32 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 *
 {
     margin:  0;
     padding: 0;
     box-sizing: border-box;
-    background: #171717;
+    background: #222222;
 }
 
-a:link, a:visited
+.link:link, .link:visited
 {
     padding:   3px;
     font-size: 50px;
     color:white;
     text-decoration: none;
-    font-family: monospace;
+    font-family: 'Bebas Neue';
+    /* font-family: monospace; */
 }
-a:hover, a:visited:hover
+
+.link:hover, .link:visited:hover
 {
-    color:#171717;
+    color:#222222;
     background-color: white;
 }
 
-#center
+.links
 {
     margin: 0;
-    top:  50%;
+    top:  60%;
     left: 50%;
     position: absolute;
     text-align: center;
-    -ms-transform: translate(-50%, -50%);
-    transform:     translate(-50%, -50%);
+    -ms-transform: translate(-50%, -60%);
+    transform:     translate(-50%, -60%);
+}
+
+.logo
+{
+    left: 50%;
+    width: 600px;
+    height: 300px;
+    position: relative;
+    display: inline-block;
+    -ms-transform: translate(-50%, 10%);
+    transform:     translate(-50%, 10%);
+}
+
+.logo .image-front
+{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.logo:hover .image-front
+{
+    display: inline;
 }
