@@ -70,7 +70,7 @@ class Particle
     {
         this.x += this.speedX;
         this.y += this.speedY;
-        // Decrease size if over threshold or set 0
+        // Decrease size if under threshold or set 0
         if (this.size > 0.3) this.size -= 0.3;
         else this.size = 0;
     }
