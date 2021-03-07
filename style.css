@@ -1,10 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 *
 {
     margin:  0;
     padding: 0;
     box-sizing: border-box;
     background: #222222;
+}
+
+.link
+{
+    margin: 0px 10px 0px 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .link:link, .link:visited
@@ -14,7 +20,6 @@
     color:white;
     text-decoration: none;
     font-family: 'Bebas Neue';
-    /* font-family: monospace; */
 }
 
 .link:hover, .link:visited:hover
@@ -38,14 +43,14 @@
 {
     left: 50%;
     width: 600px;
-    height: 300px;
+    -ms-transform: translate(-50%, 20%);
+    transform:     translate(-50%, 20%); 
+    margin: auto;
+    justify-content: center;
     position: relative;
     display: inline-block;
-    -ms-transform: translate(-50%, 20%);
-    transform:     translate(-50%, 20%);
 }
-
-.logo .image-front
+.logo .image-back
 {
     display: none;
     position: absolute;
@@ -53,8 +58,16 @@
     left: 0;
     z-index: 99;
 }
-
-.logo:hover .image-front
+.logo:hover .image-back
 {
     display: inline;
+}
+
+@media screen and (max-width: 600px)
+{
+
+    .logo img
+    {
+        height: 20vh;
+    }
 }
