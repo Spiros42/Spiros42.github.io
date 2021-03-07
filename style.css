@@ -3,30 +3,30 @@
     margin:  0;
     padding: 0;
     box-sizing: border-box;
-    background:  #171717;
+    background: #171717;
 }
 
 a:link, a:visited
 {
-    padding: 3px;
-    font-size:        50px;
-    color:              white;
-    text-decoration:       none;
-    font-family:      monospace;
+    padding:   3px;
+    font-size: 50px;
+    color:white;
+    text-decoration: none;
+    font-family: monospace;
 }
 a:hover, a:visited:hover
 {
-    color:            black;
+    color:#171717;
     background-color: white;
 }
 
 #center
 {
     margin: 0;
-    position: absolute;
-    top: 50%;
+    top:  50%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    position: absolute;
     text-align: center;
+    -ms-transform: translate(-50%, -50%);
+    transform:     translate(-50%, -50%);
 }
