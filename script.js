@@ -9,6 +9,7 @@ canvas.height = window.innerHeight;
 const particlesArray = [];
 let hue = 0;
 const mouse = {x: undefined, y: undefined, }
+let mouse_down = false;
 
 // ------------------------------------------------------
 // Listeners
