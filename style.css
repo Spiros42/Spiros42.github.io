@@ -26,12 +26,12 @@
 .links
 {
     margin: 0;
-    top:  60%;
+    top:  65%;
     left: 50%;
     position: absolute;
     text-align: center;
-    -ms-transform: translate(-50%, -60%);
-    transform:     translate(-50%, -60%);
+    -ms-transform: translate(-50%, -65%);
+    transform:     translate(-50%, -65%);
 }
 
 .logo
@@ -41,8 +41,8 @@
     height: 300px;
     position: relative;
     display: inline-block;
-    -ms-transform: translate(-50%, 10%);
-    transform:     translate(-50%, 10%);
+    -ms-transform: translate(-50%, 20%);
+    transform:     translate(-50%, 20%);
 }
 
 .logo .image-front
