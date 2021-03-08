@@ -42,6 +42,8 @@ body
     font-size: 20px;
     cursor: pointer;
     animation: fade_in 2.3s;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
 }
 
 .button:hover

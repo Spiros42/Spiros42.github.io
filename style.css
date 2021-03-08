@@ -22,6 +22,7 @@ body
     display: flex;
     justify-content: center;
     animation: drop_up 2s;
+    background: transparent;
 }
 
 .link:link, .link:visited
@@ -107,7 +108,7 @@ a:hover img:first-child
     }
 }
 
-@media screen and (max-height: 800px)
+@media screen and (max-height: 850px)
 {
 
     
@@ -121,8 +122,13 @@ a:hover img:first-child
 
     }
 
+    .logo-container img
+    {
+        height: 30vh;
+    }
+
     .link
     {
-        font-size: 30px;
+        font-size: 40px;
     }
 }
