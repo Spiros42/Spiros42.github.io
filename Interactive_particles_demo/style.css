@@ -8,7 +8,11 @@
 body
 {
     overflow: hidden;
-    background: black;
+    background: #222222;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 
 .canvas1
@@ -16,4 +20,32 @@ body
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.footer
+{   
+    position: absolute;
+    bottom: 3vh;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+}
+
+.button
+{
+    border: 1.5px solid white;
+    background: transparent;
+    color: white;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    animation: fade_in 2.3s;
+}
+
+.button:hover
+{
+    background: white;
+    color: #222222;
 }

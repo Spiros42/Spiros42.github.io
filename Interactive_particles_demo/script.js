@@ -12,7 +12,7 @@ let adjustSize = innerWidth * 0.005;
 let adjustX = (innerWidth   / 2) - (130 * innerWidth * 0.005 / 2);
 let adjustY =  (innerHeight / 2) - (40 * innerHeight * 0.005 / 2);
 // Interaction radius around the mouse
-const radius = 50;
+const radius = adjustSize * 7.5;
 // Handling mouse interactions
 const mouse = 
 {
