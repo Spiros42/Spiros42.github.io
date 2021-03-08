@@ -44,34 +44,27 @@
 {
     top: 15%;
     display: flex;
+    position: relative;
     justify-content: center;
     -ms-transform: translate(0, 15%);
     transform:     translate(0, 15%);
 }
 
-/* .logo
-{
-    left: 50%;
-    width: 600px;
-    -ms-transform: translate(-50%, 20%);
-    transform:     translate(-50%, 20%); 
-    margin: auto;
-    justify-content: center;
-    position: relative;
-    display: inline-block;
-}
-.logo .image-back
+a img:last-child
 {
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 99;
 }
-.logo:hover .image-back
+
+a:hover img:last-child
 {
-    display: inline;
-} */
+    display: block;
+}
+
+a:hover img:first-child
+{
+    display: none;
+}
+
 
 @media screen and (max-width: 600px)
 {
