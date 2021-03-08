@@ -12,7 +12,7 @@
     margin: 0px 0px 0px 0px;
     display: flex;
     justify-content: center;
-    animation: drop 3s;
+    animation: drop_up 3s;
 }
 
 .link:link, .link:visited
@@ -48,6 +48,11 @@
     justify-content: center;
     -ms-transform: translate(0, 15%);
     transform:     translate(0, 15%);
+}
+
+a img
+{
+    animation: drop_down 2s;
 }
 
 a img:last-child
@@ -118,7 +123,24 @@ a:hover img:first-child
     }
 }
 
-@keyframes drop
+@keyframes drop_up
+{
+    0%
+    {
+        opacity: 0;
+        -ms-transform: translateY(100px);
+        transform: translateY(100px);
+    }
+
+    100%
+    {
+        opacity: 1;
+        -ms-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+@keyframes drop_down
 {
     0%
     {
