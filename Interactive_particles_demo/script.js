@@ -6,11 +6,13 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+const scan_width = 130;
+const scan_height = 40;
 let particleArray = [];
 // Variables for adjusting position
 let adjustSize = innerWidth * 0.005;
-let adjustX = (innerWidth   / 2) - (130 * innerWidth * 0.005 / 2);
-let adjustY =  (innerHeight / 2) - (40 * innerHeight * 0.005 / 2);
+let adjustX = innerWidth / 2 - scan_width / 2 * adjustSize;
+let adjustY = innerHeight / 2 - scan_height / 2  * adjustSize;
 // Interaction radius around the mouse
 const radius = adjustSize * 7.5;
 // Handling mouse interactions
@@ -23,7 +25,7 @@ const mouse =
 ctx.fillStyle = "white";
 ctx.font = "30px Verdana";
 ctx.fillText("Spiros42", 0, 30);
-const imageData = ctx.getImageData(0, 0, 130, 40);
+const imageData = ctx.getImageData(0, 0, scan_width, scan_height);
 
 
 // ------------------------------------------------------
