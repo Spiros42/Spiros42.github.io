@@ -8,7 +8,8 @@
 
 .link
 {
-    margin: 0px 10px 0px 10px;
+    font-size: 50px;
+    margin: 0px 0px 0px 0px;
     display: flex;
     justify-content: center;
 }
@@ -16,7 +17,6 @@
 .link:link, .link:visited
 {
     padding:   3px;
-    font-size: 50px;
     color:white;
     text-decoration: none;
     font-family: 'Bebas Neue';
@@ -39,7 +39,21 @@
     transform:     translate(-50%, -65%);
 }
 
-.logo
+.logo-container
+{
+    top: 15%;
+    display: flex;
+    justify-content: center;
+    -ms-transform: translate(0, 15%);
+    transform:     translate(0, 15%);
+}
+
+
+
+
+
+
+/* .logo
 {
     left: 50%;
     width: 600px;
@@ -61,13 +75,41 @@
 .logo:hover .image-back
 {
     display: inline;
-}
+} */
 
 @media screen and (max-width: 600px)
 {
 
-    .logo img
+    
+    .links
+    {
+        margin: 0;
+        top:  50%;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        -ms-transform: translate(-50%, -50%);
+        transform:     translate(-50%, -50%);
+
+    }
+
+    .logo-container
+    {
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        -ms-transform: translate(0, 50%);
+        transform:     translate(0, 50%);
+    }
+
+
+    .logo-container img
     {
         height: 20vh;
+    }
+
+    .link
+    {
+        font-size: 40px;
     }
 }
