@@ -6,6 +6,11 @@
     background: #222222;
 }
 
+body
+{
+    overflow: hidden;
+}
+
 .link
 {
     font-size: 50px;
