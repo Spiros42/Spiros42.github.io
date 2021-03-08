@@ -6,15 +6,20 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+let particleArray = [];
+// Width and height of scanned area
 const scan_width = 130;
 const scan_height = 40;
-let particleArray = [];
-// Variables for adjusting position
-let adjustSize = innerWidth * 0.005;
-let adjustX = innerWidth / 2 - scan_width / 2 * adjustSize;
-let adjustY = innerHeight / 2 - scan_height / 2  * adjustSize;
+// Distance in which the particles connect
+const distanceThreshlod = canvas.width * 0.014;
+// Variables for adjusting position now centered
+let adjustSize = canvas.width * 0.005;
+let adjustX = canvas.width / 2 - scan_width / 2 * adjustSize;
+let adjustY = canvas.height / 2 - scan_height / 2  * adjustSize;
+// Particle size
+let particleSize = canvas.width * 0.0015;
 // Interaction radius around the mouse
-const radius = adjustSize * 7.5;
+const radius = canvas.width * 0.05;
 // Handling mouse interactions
 const mouse = 
 {
@@ -27,18 +32,24 @@ ctx.font = "30px Verdana";
 ctx.fillText("Spiros42", 0, 30);
 const imageData = ctx.getImageData(0, 0, scan_width, scan_height);
 
+ctx.lineWidth = 1;
+
 
 // ------------------------------------------------------
 // Listeners
 // ------------------------------------------------------
 // ------------------------------------------------------
+// Listener on event resize
+window.addEventListener("resize", function()
+{
+    location.reload();
+})
 // Listener on event mouse move
 window.addEventListener("mousemove",function(event)
 {
     mouse.x = event.x;
     mouse.y = event.y;
 });
-
 // ------------------------------------------------------
 // Particle class
 // ------------------------------------------------------
@@ -49,7 +60,7 @@ class Particle
     {
         this.x = x;
         this.y = y;
-        this.size = 3;
+        this.size = particleSize;
         // Density change the force
         this.desnity = (Math.random() * 30) + 1; 
         // Vars for holding original position of particle
@@ -149,7 +160,30 @@ function animate()
         particleArray[i].draw();
         particleArray[i].update();
     }
-
+    connect();
+    
     requestAnimationFrame(animate);
 }
 animate();
+
+function connect()
+{
+    for (let a = 0; a < particleArray.length; a++)
+    {
+        for (let b = a; b < particleArray.length; b++)
+        {
+            let dx = particleArray[a].x - particleArray[b].x;
+            let dy = particleArray[a].y - particleArray[b].y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < distanceThreshlod)
+            {
+                ctx.strokeStyle = "white";
+                ctx.beginPath();
+                ctx.moveTo(particleArray[a].x, particleArray[a].y);
+                ctx.lineTo(particleArray[b].x, particleArray[b].y);
+                ctx.stroke();
+            }
+        }
+    }
+}
