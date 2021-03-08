@@ -48,11 +48,6 @@
     transform:     translate(0, 15%);
 }
 
-
-
-
-
-
 /* .logo
 {
     left: 50%;
@@ -84,32 +79,47 @@
     .links
     {
         margin: 0;
-        top:  50%;
+        top:  60%;
         left: 50%;
-        position: absolute;
-        text-align: center;
-        -ms-transform: translate(-50%, -50%);
-        transform:     translate(-50%, -50%);
+        -ms-transform: translate(-50%, -60%);
+        transform:     translate(-50%, -60%);
 
     }
 
     .logo-container
     {
         top: 50%;
-        display: flex;
-        justify-content: center;
         -ms-transform: translate(0, 50%);
         transform:     translate(0, 50%);
     }
 
-
     .logo-container img
     {
-        height: 20vh;
+        height: 22vh;
     }
 
     .link
     {
-        font-size: 40px;
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-height: 800px)
+{
+
+    
+    .links
+    {
+        margin: 0;
+        top:  70%;
+        left: 50%;
+        -ms-transform: translate(-50%, -70%);
+        transform:     translate(-50%, -70%);
+
+    }
+
+    .link
+    {
+        font-size: 30px;
     }
 }
