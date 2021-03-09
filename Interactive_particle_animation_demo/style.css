@@ -76,7 +76,7 @@ canvas
 
 }
 
-.colorShiftContainer, .thresholdSlider, .checkboxdiv
+.colorShiftContainer, .thresholdSlider, .checkboxdiv, .alphaSliderContainer
 {
     margin-left: 50px;
 }
