@@ -25,7 +25,7 @@ body
 .footer
 {   
     position: absolute;
-    bottom: 3vh;
+    top: 90vh;
     width: 100%;
     left: 50%;
     transform: translateX(-60px);
@@ -41,11 +41,10 @@ body
     height: 50px;
     font-size: 20px;
     cursor: pointer;
-    animation: fade_in 2.3s;
     font-family: 'Bebas Neue';
     font-size: 30px;
+    animation: fade_in 2s;
 }
-
 .button:hover
 {
     background: white;

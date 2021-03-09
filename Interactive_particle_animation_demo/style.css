@@ -80,3 +80,34 @@ canvas
 {
     margin-left: 50px;
 }
+
+.footer
+{   
+    position: relative;
+    bottom: 0;
+    top: 90vh;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-60px);
+    -ms-transform: translateX(-60px);
+}
+
+.button
+{
+    border: 1.5px solid white;
+    background: transparent;
+    color: white;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    animation: fade_in 2.3s;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    animation: fade_in 2s;
+}
+.button:hover
+{
+    background: white;
+    color: #222222;
+}
