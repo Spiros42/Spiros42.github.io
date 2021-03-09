@@ -29,6 +29,7 @@ const mouse =
     y: undefined
 }
 
+
 // ------------------------------------------------------
 // Handling inputs
 // ------------------------------------------------------
@@ -58,6 +59,7 @@ let colorShift =
 const oneColorCheckBox = document.getElementById("oneColor");
 let oneColor = false;
 let baseColor = 0;
+
 
 // ------------------------------------------------------
 // Listeners
@@ -101,7 +103,7 @@ document.addEventListener("contextmenu", function (e) {
 // ------------------------------------------------------
 // ------------------------------------------------------
 // Listener on particle slider input
-particleSlider.addEventListener("input", function()
+particleSlider.addEventListener("input", function(event)
 {
     particlesArray = [];
     particleValue.innerHTML = this.value;
@@ -147,6 +149,7 @@ oneColorCheckBox.addEventListener("input", function(event)
         oneColor = false;
     }
 });
+
 
 // ------------------------------------------------------
 // Particle class
@@ -210,6 +213,7 @@ class Particle
     }
 }
 
+
 // ------------------------------------------------------
 // Functions
 // ------------------------------------------------------
@@ -266,11 +270,6 @@ function connect()
                 hue++;
                 if (hue > colorShift.end) hue = colorShift.start;
             }
-            // else
-            // {
-            //     if(particlesArray[a].connections > 0) particlesArray[a].connections--;
-            //     if(particlesArray[b].connections > 0) particlesArray[b].connections--;
-            // }
         }
     }
 }

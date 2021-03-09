@@ -3,13 +3,27 @@
 // ------------------------------------------------------
 // ------------------------------------------------------
 const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+const ctx = canvas.getContext("2d");
 const particlesArray = [];
-let hue = 0;
+
 const mouse = {x: undefined, y: undefined, }
 let mouse_down = false;
+
+let hue = 0;
+
+// ------------------------------------------------------
+// Handling inputs
+// ------------------------------------------------------
+// ------------------------------------------------------
+// Particle speed slider
+const sliderSpeed = document.getElementById("sliderSpeed");
+const speedValue = document.getElementById("speedValue");
+speedValue.innerHTML = sliderSpeed.value;
+let speed = sliderSpeed.value;
+
 
 // ------------------------------------------------------
 // Listeners
@@ -20,19 +34,19 @@ window.addEventListener("resize", function()
 {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-})
+});
 
 // Listener on event mouse down
 canvas.addEventListener("mousedown", function(event)
 {
     mouse_down = true;
-})
+});
 
 // Listener on event mouse up
 canvas.addEventListener("mouseup", function(event)
 {
     mouse_down = false;
-})
+});
 
 // Listener on event mouse move
 canvas.addEventListener("mousemove", function(event)
@@ -48,7 +62,19 @@ canvas.addEventListener("mousemove", function(event)
             particlesArray.push(new Particle());
         }
     }
-})
+});
+
+// ------------------------------------------------------
+// Input listeners
+// ------------------------------------------------------
+// ------------------------------------------------------
+// Listener on particle speed slider
+sliderSpeed.addEventListener("input",function(event)
+{
+    speedValue.innerHTML = sliderSpeed.value;
+    speed = sliderSpeed.value;
+});
+
 
 // ------------------------------------------------------
 // Particle class
@@ -61,8 +87,8 @@ class Particle
         this.x = mouse.x;
         this.y = mouse.y;
         this.size = Math.random() * 8 + 1;
-        this.speedX = Math.random() * 20 - 10;
-        this.speedY = Math.random() * 20 - 10;
+        this.speedX = Math.random() * speed - speed / 2;
+        this.speedY = Math.random() * speed - speed / 2;
         this.color = "hsl( "+ hue + ", 100%, 50%)";
     }
     // Particle update function
@@ -88,16 +114,6 @@ class Particle
 // Functions
 // ------------------------------------------------------
 // ------------------------------------------------------
-// // Initialization of particles array
-// function init_array() 
-// {
-//     for (let i = 0; i < 250; i++)
-//     {
-//         particlesArray.push(new Particle());
-//     }    
-// }
-// init_array();
-
 // Updating and drawing particles
 function handleParticles()
 {
@@ -142,5 +158,4 @@ function animate()
 
     requestAnimationFrame(animate);    
 }
-
 animate();

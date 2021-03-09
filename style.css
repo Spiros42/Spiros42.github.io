@@ -58,7 +58,7 @@ body
     justify-content: center;
     -ms-transform: translate(0, 15%);
     transform:     translate(0, 15%);
-    animation: fade_in 1.5s;
+    animation: fade_in 1s;
 }
 
 a img:last-child

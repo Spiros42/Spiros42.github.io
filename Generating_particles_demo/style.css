@@ -1,5 +1,17 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
 body
 {
+    font-family: 'Bebas Neue';
+    color: white;
+    overflow: hidden;
     overflow: hidden;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
@@ -7,7 +19,7 @@ body
     user-select: none; /* Standard */
 }
 
-#canvas
+canvas
 {
     position: absolute;
     background: black;
@@ -44,4 +56,32 @@ body
 {
     background: white;
     color: #222222;
+}
+
+
+.slider
+{
+    width: 20vh;
+    height: 15px;
+    opacity: 0.7;
+    border-radius: 12px;
+    -webkit-appearance: none;
+    background: #3b3b3b;
+    cursor: pointer;
+    outline: none;
+}
+.inputsContainer
+{
+    position: absolute;
+    display: flex;
+    top: 1vh;
+    left: 50%;
+    height: 6vh;
+    transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+}
+.inputsContainer p
+{
+    font-size: 2vh;
+    opacity: 0.7;
 }
