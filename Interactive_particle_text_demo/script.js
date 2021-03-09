@@ -175,14 +175,13 @@ function connect()
     for (let a = 0; a < particleArray.length; a++)
     {
         // And comparing it with other particles
-        // of array
         for (let b = a; b < particleArray.length; b++)
         {
             let dx = particleArray[a].x - particleArray[b].x;
             let dy = particleArray[a].y - particleArray[b].y;
             let distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < connectThreshold)
+            if (distance < distanceThreshold)
             {
                 ctx.beginPath();
                 ctx.moveTo(particleArray[a].x, particleArray[a].y);
