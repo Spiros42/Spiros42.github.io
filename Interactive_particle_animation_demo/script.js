@@ -4,9 +4,9 @@
 // ------------------------------------------------------
 // Canvas setup
 const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+const ctx = canvas.getContext("2d");
 
 // Particle array setup
 let particlesArray = [];
@@ -35,16 +35,20 @@ const mouse =
 // ------------------------------------------------------
 // ------------------------------------------------------
 // Particle range slider
-const particleSlider = document.getElementById("particleRange");
+const particleRange = document.getElementById("particleRange");
 const particleValue = document.getElementById("particleValue");
-particleValue.innerHTML = particleSlider.value;
-numberOfParticles = particleSlider.value;
+particleValue.innerHTML = particleRange.value;
+numberOfParticles = particleRange.value;
 
 // Connection distance threshold slider
 const thresholdSlider = document.getElementById("threshold");
 const thresholdValue = document.getElementById("thresholdValue");
 thresholdValue.innerHTML = thresholdSlider.value;
 let connectThreshold = thresholdSlider.value;
+
+// Alpha slider
+const alphaSlider = document.getElementById("alphaRange");
+let alpha = alphaSlider.value / 100 * -1;
 
 // Color shift sliders
 const colorStartSlider = document.getElementById("colorStart");
@@ -103,7 +107,7 @@ document.addEventListener("contextmenu", function (e) {
 // ------------------------------------------------------
 // ------------------------------------------------------
 // Listener on particle slider input
-particleSlider.addEventListener("input", function(event)
+particleRange.addEventListener("input", function(event)
 {
     particlesArray = [];
     particleValue.innerHTML = this.value;
@@ -114,8 +118,14 @@ particleSlider.addEventListener("input", function(event)
 // Listener on Distance connection threshold slider
 thresholdSlider.addEventListener("input",function(event)
 {
-    connectThreshold = thresholdSlider.value;
     thresholdValue.innerHTML = thresholdSlider.value;
+    connectThreshold = thresholdSlider.value;
+});
+
+// Listener on Distance connection threshold slider
+alphaSlider.addEventListener("input",function(event)
+{
+    alpha = alphaSlider.value / 100 * -1;
 });
 
 // Listener on color shift start slider
@@ -239,11 +249,13 @@ function handleParticles()
 
 // Animate function
 function animate()
-{
-    requestAnimationFrame(animate);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+{   
+    ctx.fillStyle = "rgba(0, 0, 0," + alpha + ")";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     handleParticles();
     connect();
+
+    requestAnimationFrame(animate);
 }
 animate();
 
