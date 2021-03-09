@@ -68,6 +68,8 @@ canvas
 .checkboxdiv
 {
     display:flex;
+    position: relative;
+    top: 0.25vh;
 }
 
 .colorShiftContainer
