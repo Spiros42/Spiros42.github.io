@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Particle animation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>       
+        <canvas></canvas>
+        
+        <div class="inputsContainer">
+            
+            <div class="particleSliderContainer">
+                <p>Number of particles: <span id="particleValue"></span></p>
+                <input type="range" min ="100" max="1000" value="250" id="particleRange" class="slider">
+            </div>
+            
+            <div class="thresholdSlider">
+                <p>Connection distance: <span id="thresholdValue"></span></p>
+                <input type="range" min="0" max="200" value="100" id="threshold" class="slider">
+            </div>
+            
+            <div class="colorShiftContainer">
+                <p>Color shift:</p>
+                <input type="range" min="0" max="360" value="100" id="colorStart" class="slider">
+                <input type="range" min="0" max="360" value="320" id="colorEnd" class="slider">
+            </div>
+
+            <div class="checkboxdiv">
+                <p>One color: </p>
+                <input type="checkbox" id="oneColor" class="checkbox">
+            </div>
+            
+            
+        </div>
+
+        <script src="script.js" async defer></script>
+    </body>
+</html>

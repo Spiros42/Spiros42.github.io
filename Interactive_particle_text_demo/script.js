@@ -2,16 +2,19 @@
 // Setup
 // ------------------------------------------------------
 // ------------------------------------------------------
+// Basic setup
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+ctx.strokeStyle = "white";
+ctx.lineWidth = 1;
 let particleArray = [];
 // Width and height of scanned area
 const scan_width = 130;
 const scan_height = 40;
 // Distance in which the particles connect
-const distanceThreshlod = canvas.width * 0.014;
+const distanceThreshold = canvas.width * 0.014;
 // Variables for adjusting position now centered
 let adjustSize = canvas.width * 0.005;
 let adjustX = canvas.width / 2 - scan_width / 2 * adjustSize;
@@ -32,8 +35,6 @@ ctx.font = "30px Verdana";
 ctx.fillText("Spiros42", 0, 30);
 const imageData = ctx.getImageData(0, 0, scan_width, scan_height);
 
-ctx.lineWidth = 1;
-
 
 // ------------------------------------------------------
 // Listeners
@@ -50,6 +51,8 @@ window.addEventListener("mousemove",function(event)
     mouse.x = event.x;
     mouse.y = event.y;
 });
+
+
 // ------------------------------------------------------
 // Particle class
 // ------------------------------------------------------
@@ -118,6 +121,7 @@ class Particle
     }
 }
 
+
 // ------------------------------------------------------
 // Functions
 // ------------------------------------------------------
@@ -150,7 +154,6 @@ function init()
     }
 }
 init();
-
 // Animate function
 function animate()
 {
@@ -165,20 +168,22 @@ function animate()
     requestAnimationFrame(animate);
 }
 animate();
-
+// Connect function
 function connect()
 {
+    // Going through particle array
     for (let a = 0; a < particleArray.length; a++)
     {
+        // And comparing it with other particles
+        // of array
         for (let b = a; b < particleArray.length; b++)
         {
             let dx = particleArray[a].x - particleArray[b].x;
             let dy = particleArray[a].y - particleArray[b].y;
             let distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < distanceThreshlod)
+            if (distance < connectThreshold)
             {
-                ctx.strokeStyle = "white";
                 ctx.beginPath();
                 ctx.moveTo(particleArray[a].x, particleArray[a].y);
                 ctx.lineTo(particleArray[b].x, particleArray[b].y);
