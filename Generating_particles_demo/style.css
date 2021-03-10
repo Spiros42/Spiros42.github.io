@@ -51,11 +51,17 @@ canvas
     font-family: 'Bebas Neue';
     font-size: 30px;
     animation: fade_in 2s;
+    outline: 0;
 }
 .button:hover
 {
     background: white;
     color: #222222;
+}
+.button:active
+{
+    background: #222222;
+    color: white;
 }
 
 
