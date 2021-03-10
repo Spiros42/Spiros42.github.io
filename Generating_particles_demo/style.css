@@ -74,6 +74,8 @@ canvas
 {
     position: absolute;
     display: flex;
+    justify-content: center;
+    width: 100%;
     top: 1vh;
     left: 50%;
     height: 6vh;
@@ -84,4 +86,25 @@ canvas
 {
     font-size: 2vh;
     opacity: 0.7;
+}
+
+.sliderDistance, .sliderSize, .sliderHue, .sliderOpacity, .checkboxLine
+{
+    padding-left: 50px;
+}
+
+.checkboxLine
+{
+    position: relative;
+    top: 0.5vh;
+    display: flex;
+    text-align: left;
+}
+
+.checkboxLine input
+{
+    margin-top: 0.1vh;
+    margin-left: 1vh;
+    width: 2vh;
+    height: 2vh;
 }

@@ -17,8 +17,33 @@
         <div class="inputsContainer">
             
             <div class="sliderSpeed">
-                <p>Brush size: <span id="speedValue"></span></p>
+                <p>Particles speed: <span id="speedValue"></span></p>
                 <input type="range" min="0" max="100" value="10" id="sliderSpeed" class="slider">
+            </div>
+            
+            <div class="sliderSize">
+                <p>Max particle size: <span id="sizeValue"></span></p>
+                <input type="range" min="0" max="50" value="10" id="sliderSize" class="slider">
+            </div>
+            
+            <div class="sliderDistance">
+                <p>Connection distance: <span id="distanceValue"></span>px</p>
+                <input type="range" min="0" max="500" value="100" id="sliderDistance" class="slider">
+            </div>
+
+            <div class="sliderHue">
+                <p>Color change speed:</p>
+                <input type="range" min="5" max="100" value="10" id="sliderHue" class="slider">
+            </div>
+
+            <div class="sliderOpacity">
+                <p>Motion residue:</p>
+                <input type="range" min="-100" max="-2" value="-2" id="sliderOpacity" class="slider">
+            </div>
+
+            <div class="checkboxLine">
+                <p>Fixed line width:</p>
+                <input type="checkbox" id="checkboxLineWidth" checked>
             </div>
 
         </div>

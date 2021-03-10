@@ -1,18 +1,23 @@
 // ------------------------------------------------------
+// Setup
+// ------------------------------------------------------
+// ------------------------------------------------------
 // Canvas and context setup
-// ------------------------------------------------------
-// ------------------------------------------------------
 const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 const ctx = canvas.getContext("2d");
+
+// Particle array declaration
 const particlesArray = [];
 
-const mouse = {x: undefined, y: undefined, }
+// Mouse constant with mouse down boolean
+const mouse =
+{
+    x: undefined, 
+    y: undefined, 
+}
 let mouse_down = false;
-
-let hue = 0;
 
 // ------------------------------------------------------
 // Handling inputs
@@ -24,13 +29,38 @@ const speedValue = document.getElementById("speedValue");
 speedValue.innerHTML = sliderSpeed.value;
 let speed = sliderSpeed.value;
 
+// Connection distance slider
+const sliderDistance = document.getElementById("sliderDistance");
+const distanceValue = document.getElementById("distanceValue");
+distanceValue.innerHTML = sliderDistance.value;
+let connectionDistance = sliderDistance.value;
+
+// Particle size slider
+const sliderSize = document.getElementById("sliderSize");
+const sizeValue = document.getElementById("sizeValue");
+sizeValue.innerHTML = sliderSize.value;
+let particleSize = sliderSize.value;
+
+// Hue slider
+const sliderHue = document.getElementById("sliderHue");
+let hueIncrement = sliderHue.value / 10;    
+let hue = 0;
+
+// Opacity slider
+const sliderOpacity = document.getElementById("sliderOpacity");
+let opacity = sliderOpacity.value / 100 * -1;
+
+// Line width randomization checkbox
+const checkboxLineWidth = document.getElementById("checkboxLineWidth");
+let fixedLineWidth = true;
+
 
 // ------------------------------------------------------
 // Listeners
 // ------------------------------------------------------
 // ------------------------------------------------------
 // Listener on event resize
-window.addEventListener("resize", function()
+window.addEventListener("resize", function(event)
 {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -64,6 +94,12 @@ canvas.addEventListener("mousemove", function(event)
     }
 });
 
+// Disabling context menu on right click
+document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+}, false);
+
+
 // ------------------------------------------------------
 // Input listeners
 // ------------------------------------------------------
@@ -73,6 +109,39 @@ sliderSpeed.addEventListener("input",function(event)
 {
     speedValue.innerHTML = sliderSpeed.value;
     speed = sliderSpeed.value;
+});
+
+// Listener on connection distance slider input
+sliderDistance.addEventListener("input", function(event)
+{
+    distanceValue.innerHTML = sliderDistance.value;
+    connectionDistance = sliderDistance.value;
+});
+
+// Listener on particle size slider input
+sliderSize.addEventListener("input", function(event)
+{
+    sizeValue.innerHTML = sliderSize.value;
+    particleSize = sliderSize.value;
+});
+
+// Listener on hue slider input
+sliderHue.addEventListener("input", function(event)
+{
+    hueIncrement = sliderHue.value / 10;
+});
+
+// Listener on opacity slider input
+sliderOpacity.addEventListener("input", function(event)
+{
+    opacity = sliderOpacity.value / 100 * -1;
+});
+
+// Listener on line randomization checkbox
+checkboxLineWidth.addEventListener("input", function(event)
+{
+    if (fixedLineWidth == false) fixedLineWidth = true;
+    else if (fixedLineWidth == true) fixedLineWidth = false;
 });
 
 
@@ -86,7 +155,7 @@ class Particle
     {
         this.x = mouse.x;
         this.y = mouse.y;
-        this.size = Math.random() * 8 + 1;
+        this.size = Math.random() * particleSize + 1;
         this.speedX = Math.random() * speed - speed / 2;
         this.speedY = Math.random() * speed - speed / 2;
         this.color = "hsl( "+ hue + ", 100%, 50%)";
@@ -127,12 +196,19 @@ function handleParticles()
             const dx = particlesArray[i].x - particlesArray[j].x;
             const dy = particlesArray[i].y - particlesArray[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            // When particles are closer than 100px make line between them
-            if (distance < 100)
+            // When particles are closer than variable make line between them
+            if (distance < connectionDistance)
             {
                 ctx.beginPath();
                 ctx.strokeStyle = particlesArray[i].color;
-                ctx.lineWidth = particlesArray[i].size;
+                if (fixedLineWidth == true)
+                {
+                    ctx.lineWidth = 1;
+                }
+                else
+                {
+                    ctx.lineWidth = particlesArray[i].size;
+                }
                 ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
                 ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
                 ctx.stroke();
@@ -150,11 +226,10 @@ function handleParticles()
 // Animate function
 function animate()
 {
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "rgba(0, 0, 0, 0.02)";
+    ctx.fillStyle = "rgba(0, 0, 0," + opacity +  ")";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     handleParticles();
-    hue += 3;
+    hue += hueIncrement;
 
     requestAnimationFrame(animate);    
 }
