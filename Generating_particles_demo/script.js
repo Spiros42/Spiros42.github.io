@@ -54,6 +54,14 @@ let opacity = sliderOpacity.value / 100 * -1;
 const checkboxLineWidth = document.getElementById("checkboxLineWidth");
 let fixedLineWidth = true;
 
+// Round radio button
+const radioRound = document.getElementById("radioRound");
+let round = true;
+
+// Square radio button
+const radioSquare = document.getElementById("radioSquare");
+let square = false;
+
 
 // ------------------------------------------------------
 // Listeners
@@ -144,6 +152,19 @@ checkboxLineWidth.addEventListener("input", function(event)
     else if (fixedLineWidth == true) fixedLineWidth = false;
 });
 
+// Listener on round radio button input
+radioRound.addEventListener("input", function(event)
+{
+    round = true;
+    square = false;
+});
+// Listener on square radio button input
+radioSquare.addEventListener("input", function(event)
+{
+    square = true;
+    round = false;
+});
+
 
 // ------------------------------------------------------
 // Particle class
@@ -174,8 +195,15 @@ class Particle
     {
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size ,0 , Math.PI * 2);
-        ctx.fill();
+        if (round == true)
+        {
+            ctx.arc(this.x, this.y, this.size ,0 , Math.PI * 2);
+            ctx.fill();
+        }
+        if (square == true)
+        {
+            ctx.fillRect(this.x, this.y, this.size, this.size);
+        }
     }
 }
 

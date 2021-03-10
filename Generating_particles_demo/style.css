@@ -90,11 +90,6 @@ canvas
     animation: drop_down 1s;
 }
 
-.sliderDistance, .sliderSize, .sliderHue, .sliderOpacity, .checkboxLine
-{
-    padding-left: 50px;
-}
-
 .checkboxLine
 {
     position: relative;
@@ -106,8 +101,33 @@ canvas
 
 .checkboxLine input
 {
+    opacity: 0.7;
     margin-top: 0.1vh;
     margin-left: 1vh;
     width: 2vh;
     height: 2vh;
+}
+
+.radioType
+{
+    animation: drop_down 1s;
+}
+
+.radioType input
+{
+    width: 2vh;
+    height: 2vh;
+    opacity: 0.7;
+    margin-left: 1vh;
+}
+
+.round, .square
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sliderDistance, .sliderSize, .sliderHue, .sliderOpacity, .checkboxLine, .radioType
+{
+    padding-left: 50px;
 }
