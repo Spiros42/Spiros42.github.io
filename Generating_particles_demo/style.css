@@ -94,6 +94,7 @@ canvas
     font-size: 2vh;
     opacity: 0.7;
     animation: drop_down 1s;
+    pointer-events: none;
 }
 
 .checkboxLine
