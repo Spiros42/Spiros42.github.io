@@ -50,9 +50,9 @@ let hue = 0;
 const sliderOpacity = document.getElementById("sliderOpacity");
 let opacity = sliderOpacity.value / 100 * -1;
 
-// Line width randomization checkbox
-const checkboxLineWidth = document.getElementById("checkboxLineWidth");
-let fixedLineWidth = true;
+// Line around particles check box
+const checkboxLine = document.getElementById("checkboxLine");
+let particleLine = false;
 
 // Round radio button
 const radioRound = document.getElementById("radioRound");
@@ -71,6 +71,7 @@ buttonInput.addEventListener("click", function(event)
 {
     if (inputShown == false)
     {
+        document.getElementById("buttonInput").style.transform = "rotate(90deg)";
         document.getElementById("inputsContainer").style.animation = "drop_up 1s";
         document.getElementById("inputsContainer").style.display = "block";
         document.getElementById("buttonInput").style.background = "white";
@@ -80,6 +81,7 @@ buttonInput.addEventListener("click", function(event)
     }
     else
     {
+        document.getElementById("buttonInput").style.transform = "rotate(0deg)";
         document.getElementById("inputsContainer").style.animation = "fade_out 0.5s";
         window.setTimeout("document.getElementById('inputsContainer').style.display = 'none';", 500);
         document.getElementById("buttonInput").style.background = "none";
@@ -177,9 +179,9 @@ sliderOpacity.addEventListener("input", function(event)
 });
 
 // Listener on line randomization checkbox
-checkboxLineWidth.addEventListener("input", function(event)
+checkboxLine.addEventListener("input", function(event)
 {
-    fixedLineWidth = !fixedLineWidth;
+    particleLine = !particleLine;
 });
 
 // Listener on round radio button input
@@ -227,12 +229,21 @@ class Particle
         ctx.beginPath();
         if (round == true)
         {
+            ctx.strokeStyle = "black";
             ctx.arc(this.x, this.y, this.size ,0 , Math.PI * 2);
             ctx.fill();
+            if (particleLine == true)   ctx.stroke();
         }
         if (square == true)
         {
-            ctx.fillRect(this.x, this.y, this.size, this.size);
+            if (particleLine == true) 
+            {
+                ctx.strokeStyle = "black";
+                ctx.fillRect(this.x - 1, this.y - 1, this.size - 1, this.size - 1);
+                ctx.strokeRect(this.x, this.y, this.size, this.size);
+            }  
+                
+            else   ctx.fillRect(this.x, this.y, this.size, this.size);
         }
     }
 }
@@ -259,14 +270,7 @@ function handleParticles()
             {
                 ctx.beginPath();
                 ctx.strokeStyle = particlesArray[i].color;
-                if (fixedLineWidth == true)
-                {
-                    ctx.lineWidth = 1;
-                }
-                else
-                {
-                    ctx.lineWidth = particlesArray[i].size;
-                }
+                ctx.lineWidth = 1;
                 ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
                 ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
                 ctx.stroke();
