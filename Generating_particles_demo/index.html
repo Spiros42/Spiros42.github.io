@@ -7,14 +7,20 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="../Source/animations.css">
+        <link rel="stylesheet" href="../../../../Spiros42.github.io/Source/animations.css">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-        <link rel="icon" href="../Source/icon.png">
+        <link rel="icon" href="/../Source/icon.png">
     </head>
     <body>       
         <canvas></canvas>
 
-        <div class="inputsContainer">
+        <div class="dropdownbutton">
+            <button class="dropDown" id="buttonInput">></button>
+            <span class="paragraph" id="paragraph">Here some are options</span><br>
+            <span class="paragraph2" id="paragraph2">Draw by holding any mouse button</span>
+        </div>
+
+        <div class="inputsContainer" id="inputsContainer">
             
             <div class="sliderSpeed">
                 <p>Particles speed: <span id="speedValue"></span></p>
@@ -27,7 +33,7 @@
             </div>
             
             <div class="sliderDistance">
-                <p>Connection distance: <span id="distanceValue"></span>px</p>
+                <p>Connection distance: <span id="distanceValue"></span> px</p>
                 <input type="range" min="0" max="500" value="100" id="sliderDistance" class="slider">
             </div>
 

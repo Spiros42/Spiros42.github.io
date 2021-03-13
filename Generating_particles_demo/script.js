@@ -62,34 +62,65 @@ let round = true;
 const radioSquare = document.getElementById("radioSquare");
 let square = false;
 
+// Show input button
+const buttonInput = document.getElementById("buttonInput");
+let inputShown = false;
 
+// Listener on show input button click
+buttonInput.addEventListener("click", function(event)
+{
+    if (inputShown == false)
+    {
+        document.getElementById("inputsContainer").style.animation = "drop_up 1s";
+        document.getElementById("inputsContainer").style.display = "block";
+        document.getElementById("buttonInput").style.background = "white";
+        document.getElementById("buttonInput").style.color = "black";
+        inputShown = true;
+        console.log(inputShown);
+    }
+    else
+    {
+        document.getElementById("inputsContainer").style.animation = "fade_out 0.5s";
+        window.setTimeout("document.getElementById('inputsContainer').style.display = 'none';", 500);
+        document.getElementById("buttonInput").style.background = "none";
+        document.getElementById("buttonInput").style.color = "white";
+        inputShown = false;
+        console.log(inputShown);
+    }
+    document.getElementById("paragraph").style.animation = "fade_out 1s";
+    window.setTimeout("document.getElementById('paragraph').style.display = 'none';", 1000);
+    
+});
+    
 // ------------------------------------------------------
 // Listeners
 // ------------------------------------------------------
 // ------------------------------------------------------
 // Listener on event resize
-window.addEventListener("resize", function(event)
-{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-// Listener on event mouse down
-canvas.addEventListener("mousedown", function(event)
-{
-    mouse_down = true;
-});
-
-// Listener on event mouse up
-canvas.addEventListener("mouseup", function(event)
-{
-    mouse_down = false;
-});
-
-// Listener on event mouse move
-canvas.addEventListener("mousemove", function(event)
-{
-    // If mouse button is down draw at mouse
+    window.addEventListener("resize", function(event)
+    {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+    
+    // Listener on event mouse down
+    canvas.addEventListener("mousedown", function(event)
+    {
+        document.getElementById("paragraph2").style.animation = "fade_out 1s";
+        window.setTimeout("document.getElementById('paragraph2').style.display = 'none';", 1000);
+        mouse_down = true;
+    });
+    
+    // Listener on event mouse up
+    canvas.addEventListener("mouseup", function(event)
+    {
+        mouse_down = false;
+    });
+    
+    // Listener on event mouse move
+    canvas.addEventListener("mousemove", function(event)
+    {
+        // If mouse button is down draw at mouse
     if (mouse_down == true)
     {
         mouse.x = event.x;
@@ -148,8 +179,7 @@ sliderOpacity.addEventListener("input", function(event)
 // Listener on line randomization checkbox
 checkboxLineWidth.addEventListener("input", function(event)
 {
-    if (fixedLineWidth == false) fixedLineWidth = true;
-    else if (fixedLineWidth == true) fixedLineWidth = false;
+    fixedLineWidth = !fixedLineWidth;
 });
 
 // Listener on round radio button input

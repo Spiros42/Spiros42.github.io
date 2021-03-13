@@ -3,8 +3,8 @@
     0%
     {
         opacity: 0;
-        -ms-transform: translateY(100px);
-        transform: translateY(100px);
+        -ms-transform: translateY(60px);
+        transform: translateY(60px);
     }
 
     100%
@@ -45,5 +45,18 @@
     100%
     {
         opacity: 1;
+    }
+}
+
+@keyframes fade_out
+{
+    0%
+    {
+        opacity: 100%;
+    }
+
+    100%
+    {
+        opacity: 0%;
     }
 }
